@@ -1,0 +1,16 @@
+src-git packages https://github.com/xiaoqingfengATGH/feeds-packages
+src-git luci https://github.com/xiaoqingfengATGH/feeds-luci
+src-git routing https://github.com/xiaoqingfengATGH/k5-feeds-routing
+src-git telephony https://github.com/xiaoqingfengATGH/k5-feeds-telephony
+src-git freifunk https://github.com/xiaoqingfengATGH/k5-feeds-freifunk
+# lienol's repo is splitted into two repo now
+src-git lienol https://github.com/homelede/openwrt-package.git
+src-git pw https://github.com/homelede/openwrt-passwall.git
+src-git xiaoqingfeng https://github.com/xiaoqingfengATGH/feeds-xiaoqingfeng
+#src-git helloworld https://github.com/fw876/helloworld
+# luci-theme-infinityfreedom
+src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git
+# homeclash
+src-git homeclash https://github.com/xiaoqingfengATGH/homeclash.git
+# strongswanInDocker
+src-git strongswanInDocker https://github.com/xiaoqingfengATGH/luci-app-strongswanInDocker.git

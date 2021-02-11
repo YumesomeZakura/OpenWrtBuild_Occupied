@@ -1,13 +1,10 @@
 name: r2s 编译Homelede的测试
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - '.github/workflows/r2s_home.yml'
   schedule:
-    - cron: '10 09 * * *'
+    - cron: 0 20 * * *
+  release:
+    types: [published]
 
 jobs:
 

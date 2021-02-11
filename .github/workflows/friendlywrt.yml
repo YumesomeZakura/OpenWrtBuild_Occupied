@@ -2,14 +2,10 @@ name: r2s 编译friendlywrt的测试
 
 
 on:
-  repository_dispatch:
-  push:
-    branches: 
-      - master
-    paths:
-      - '.github/workflows/friendlywrt.yml'
-      - 'minimal_config.seed'
-      - '*.sh'
+  schedule:
+    - cron: 0 20 * * *
+  release:
+    types: [published]
   schedule:
     - cron: '0 17 * * *'
 

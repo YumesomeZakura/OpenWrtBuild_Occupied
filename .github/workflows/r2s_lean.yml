@@ -1,4 +1,4 @@
-name: r2s Lean版openwrt
+name: r2s 编译Lean版openwrt的测试
 
 on:
   push:

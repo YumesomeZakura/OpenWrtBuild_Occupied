@@ -1,1 +1,1 @@
-
+萌新试图自行编译R2S固件，参考k大自动编译项目，xiaoqingfeng的Homelede项目，lean大佬的OpenWrt项目，谢谢大家为开源社区的贡献，谢谢

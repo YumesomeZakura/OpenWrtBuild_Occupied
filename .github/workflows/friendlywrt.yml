@@ -2,8 +2,6 @@ name: r2s 编译friendlywrt的测试
 
 
 on:
-  schedule:
-    - cron: 0 20 * * *
   release:
     types: [published]
   schedule:

@@ -15,11 +15,7 @@ jobs:
 
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@master
-        with:
-          ref: master
-
+      
       - name: Initialization Environment
         env:
           DEBIAN_FRONTEND: noninteractive

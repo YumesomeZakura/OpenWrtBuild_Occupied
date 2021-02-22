@@ -8,9 +8,11 @@ on:
 
 jobs:
 
-  build:
-
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.sec_token }}
+      sec_token: ${{ secrets.sec_token }}
 
     steps:
 

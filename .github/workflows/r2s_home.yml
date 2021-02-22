@@ -11,7 +11,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    github.event.repository.owner.id == github.event.sender.id
 
     steps:
 

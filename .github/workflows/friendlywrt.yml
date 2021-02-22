@@ -19,14 +19,6 @@ jobs:
         uses: zcong1993/setup-timezone@master
         with:
           timezone: Asia/Shanghai
-          
-     
-
-      - name: Init Env
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: |
-          . init_env.sh
       
       - name: Repo Hash
         run: |

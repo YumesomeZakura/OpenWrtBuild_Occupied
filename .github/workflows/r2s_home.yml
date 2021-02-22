@@ -8,11 +8,10 @@ on:
 
 jobs:
 
-    build:
-      runs-on: ubuntu-latest
-      env:
-        GITHUB_TOKEN: ${{ secrets.sec_token }}
-        sec_token: ${{ secrets.sec_token }}
+  build:
+
+    runs-on: ubuntu-latest
+    github.event.repository.owner.id == github.event.sender.id
 
     steps:
 

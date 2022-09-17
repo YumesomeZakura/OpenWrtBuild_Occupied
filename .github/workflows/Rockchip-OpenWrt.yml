@@ -6,7 +6,7 @@
 # https://github.com/P3TERX
 #===============================================
 
-name: Rockchip OpenWrt
+name: R2S编译Lean版openwrt
 
 on:
   workflow_dispatch:

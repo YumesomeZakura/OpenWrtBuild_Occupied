@@ -41,19 +41,13 @@ rm -rf feeds/luci/applications/luci-app-wrtbwmon
 rm -rf feeds/luci/applications/luci-app-dockerman
 
 # 添加额外软件包
-git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-git clone https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 git clone https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-eqos package/luci-app-eqos
 svn co https://github.com/kiddin9/openwrt-bypass/trunk/luci-app-bypass package/luci-app-bypass
-svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
-svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
-svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-smartdns package/luci-app-smartdns
-svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata package/luci-app-netdata
 
 # 科学上网插件依赖
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
@@ -85,17 +79,6 @@ svn co https://github.com/fw876/helloworld/trunk/simple-obfs package/simple-obfs
 svn co https://github.com/fw876/helloworld/trunk/lua-neturl package/lua-neturl
 svn co https://github.com/fw876/helloworld/trunk/trojan package/trojan
 
-# Themes
-git clone -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
-svn co https://github.com/rosywrt/luci-theme-rosy/trunk/luci-theme-rosy package/luci-theme-rosy
-svn co https://github.com/haiibo/packages/trunk/luci-theme-atmaterial_new package/luci-theme-atmaterial_new
-svn co https://github.com/haiibo/packages/trunk/luci-theme-opentomcat package/luci-theme-opentomcat
-svn co https://github.com/haiibo/packages/trunk/luci-theme-netgear package/luci-theme-netgear
-git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-git clone https://github.com/thinktip/luci-theme-neobird package/luci-theme-neobird
-
 # 晶晨宝盒
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 sed -i "s|https.*/OpenWrt|https://github.com/haiibo/OpenWrt|g" package/luci-app-amlogic/root/etc/config/amlogic
@@ -118,17 +101,6 @@ svn co https://github.com/haiibo/packages/trunk/wrtbwmon package/wrtbwmon
 svn co https://github.com/haiibo/packages/trunk/luci-app-onliner package/luci-app-onliner
 sed -i '/bin\/sh/a\uci set nlbwmon.@nlbwmon[0].refresh_interval=2s' package/lean/default-settings/files/zzz-default-settings
 sed -i '/nlbwmon/a\uci commit nlbwmon' package/lean/default-settings/files/zzz-default-settings
-
-# 修改版本为编译日期
-date_version=$(date +"%Y.%m.%d")
-orig_version=$(echo "$(cat package/lean/default-settings/files/zzz-default-settings)" | grep -Po "DISTRIB_REVISION=\'\K[^\']*")
-sed -i "s/${orig_version}/R${date_version}/g" package/lean/default-settings/files/zzz-default-settings
-
-# 修改 Makefile
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/include\ \.\.\/\.\.\/luci\.mk/include \$(TOPDIR)\/feeds\/luci\/luci\.mk/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/include\ \.\.\/\.\.\/lang\/golang\/golang\-package\.mk/include \$(TOPDIR)\/feeds\/packages\/lang\/golang\/golang\-package\.mk/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=\@GHREPO/PKG_SOURCE_URL:=https:\/\/github\.com/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=\@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload\.github\.com/g' {}
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a

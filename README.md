@@ -17,6 +17,7 @@
 ![full](X86_R2S_r68s.png)
 * X86 Inter     coolsnowwolf/lede
 * R2S Rockship  coolsnowwolf/lede
+
 ![router](AX6_AX3600.png)
 * AX6 Redmi     bitthief/openwrt
 

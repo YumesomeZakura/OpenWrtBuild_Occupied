@@ -17,11 +17,12 @@ env:
   REPO_URL: https://github.com/robimarko/openwrt
   REPO_BRANCH: ipq807x-5.15-pr
   CONFIG_FILE: configs/AX6-5.15.config
+  FEEDS_CONF: feeds.conf.default
   DIY_SCRIPT: diy-script.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
-  FILE_NAME: Rockchip
+  FILE_NAME: Redmi807X-5.15
   TZ: Asia/Shanghai
 
 jobs:
@@ -128,6 +129,6 @@ jobs:
         tag: ${{ env.FILE_NAME }}
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
-          **This is OpenWrt firmware for Rockchip**
-          * 这是 AX6-5.15 平台使用的 OpenWrt 固件
+          **This is 5.15 OpenWrt firmware for Redmi807X**
+          * 这是 Redmi807X 平台使用的 5.15 OpenWrt 固件
           ${{ env.useVersionInfo }}

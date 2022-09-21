@@ -6,7 +6,7 @@
 # https://github.com/P3TERX
 #===============================================
 
-name:  AX6编译robimarko版openwrt
+name:  QihooV6编译lean版openwrt
 
 on:
   workflow_dispatch:

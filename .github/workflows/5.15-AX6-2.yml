@@ -22,7 +22,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
-  FILE_NAME: Redmi807X-5.15
+  FILE_NAME: Redmi807X-ro
   TZ: Asia/Shanghai
 
 jobs:

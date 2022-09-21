@@ -17,7 +17,7 @@ env:
   REPO_URL: https://github.com/yaya131/lede-for-XaioMi
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: configs/AX6.config
+  CONFIG_FILE: configs/ax6-test.config
   DIY_SCRIPT: diy-script.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false

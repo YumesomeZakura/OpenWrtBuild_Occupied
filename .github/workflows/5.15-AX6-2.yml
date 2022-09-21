@@ -18,7 +18,7 @@ env:
   REPO_BRANCH: ipq807x-5.15-pr
   CONFIG_FILE: configs/AX6-5.15.config
   FEEDS_CONF: feeds.conf.default
-  DIY_SCRIPT: diy-mini.sh
+  DIY_SCRIPT: diy-ax6.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true

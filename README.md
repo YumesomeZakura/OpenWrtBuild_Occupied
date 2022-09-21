@@ -15,14 +15,14 @@
 自动拉取上游源码并编译固件，项目包含
 
 ![full](X86_R2S_r68s.png)
-* X86 Inter     coolsnowwolf/lede
-* R2S Rockship  coolsnowwolf/lede
+* `X86` Inter     `coolsnowwolf/lede`
+* `R2S` Rockship  `coolsnowwolf/lede`
 
 ![router](AX6_AX3600.png)
-* AX6 Redmi     bitthief/openwrt
+* `AX6` Redmi     `bitthief/openwrt`
 
 ## 参考项目
-早期自动编译参考klever1988，新版参考haiibo大佬。谢谢各位大佬对开源社区的风险和付出，写一个`免费`的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一下。
+早期自动编译参考klever1988，新版参考haiibo大佬。谢谢各位大佬对开源社区的风险和付出，写一个免费的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一下。
 
 ## 感激
 感谢以下的项目,排名不分先后

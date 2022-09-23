@@ -1,5 +1,6 @@
 ![logo](openwrt.png)
 ## 不太会写这个文件见谅
+<img src="https://img.shields.io/github/downloads/aoxueos/OpenWrtBuild_Occupied/total.svg?style=for-the-badge&color=32C955"/> <img src="https://img.shields.io/github/stars/aoxueos/OpenWrtBuild_Occupied.svg?style=for-the-badge&color=orange"/> <img src="https://img.shields.io/github/forks/aoxueos/OpenWrtBuild_Occupied.svg?style=for-the-badge&color=ff69b4"/> <img src="https://img.shields.io/github/license/aoxueos/OpenWrtBuild_Occupied.svg?style=for-the-badge&color=blueviolet"/>
 
 ## OpenWrtBuild_Occupied有哪些功能？
 
@@ -15,11 +16,18 @@
 自动拉取上游源码并编译固件，项目包含
 
 ![full](X86_R2S_r68s.png)
-* `X86` Inter     `coolsnowwolf/lede`
+* `X86` 
+   * [![X86编译Lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/X86_64-OpenWrt.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/X86_64-OpenWrt.yml) 
+   * [![X86编译off版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/X86_64-ImmWrt.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/X86_64-ImmWrt.yml)
 * `R2S` Rockship  `coolsnowwolf/lede`
+   * [![R2S编译Lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Rockchip-OpenWrt.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Rockchip-OpenWrt.yml)
 
 ![router](AX6_AX3600.png)
-* `AX6` Redmi     `bitthief/openwrt`
+* `AX6`
+   * [![AX6编译Almighty Edition版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml)
+   * [![AX6编译Almighty Edition版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml) [![AX6编译bitthief版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml)
+* `Qihoo`
+   * [![QihooV6编译lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml)
 
 ## 参考项目
 早期自动编译参考klever1988，新版参考haiibo大佬。谢谢各位大佬对开源社区的风险和付出，写一个免费的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一下。

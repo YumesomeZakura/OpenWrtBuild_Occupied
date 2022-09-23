@@ -6,7 +6,7 @@
 # https://github.com/P3TERX
 #===============================================
 
-name: X86编译imm版openwrt
+name: X86编译off版openwrt
 
 on:
   workflow_dispatch:
@@ -14,8 +14,8 @@ on:
     - cron: '0 19 * * *'
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-21.02
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: openwrt-22.03
   CONFIG_FILE: configs/x86-imm.config
   DIY_SCRIPT: diy-script.sh
   UPLOAD_BIN_DIR: false
@@ -26,7 +26,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout

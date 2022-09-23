@@ -17,7 +17,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: openwrt-20.03
   CONFIG_FILE: configs/x86-imm.config
-  DIY_SCRIPT: diy-script.sh
+  DIY_SCRIPT: diy-op.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true

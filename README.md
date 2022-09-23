@@ -19,7 +19,7 @@
 * `X86` 
    * [![X86编译Lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/X86_64-OpenWrt.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/X86_64-OpenWrt.yml) 
    * [![X86编译off版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/X86_64-ImmWrt.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/X86_64-ImmWrt.yml)
-* `R2S` Rockship  `coolsnowwolf/lede`
+* `R2S`
    * [![R2S编译Lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Rockchip-OpenWrt.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Rockchip-OpenWrt.yml)
 
 ![router](AX6_AX3600.png)

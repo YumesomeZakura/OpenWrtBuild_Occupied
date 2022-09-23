@@ -1,6 +1,6 @@
 ![logo](openwrt.png)
 ## 不太会写这个文件见谅
-<img src="https://img.shields.io/github/downloads/aoxueos/OpenWrtBuild_Occupied/total.svg?style=for-the-badge&color=32C955"/> <img src="https://img.shields.io/github/stars/aoxueos/OpenWrtBuild_Occupied.svg?style=for-the-badge&color=orange"/> <img src="https://img.shields.io/github/forks/aoxueos/OpenWrtBuild_Occupied.svg?style=for-the-badge&color=ff69b4"/> <img src="https://img.shields.io/github/license/aoxueos/OpenWrtBuild_Occupied.svg?style=for-the-badge&color=blueviolet"/>
+<img src="https://img.shields.io/github/downloads/aoxueos/OpenWrtBuild_Occupied/total.svg?style=for-the-badge&color=32C955"/> <img src="https://img.shields.io/github/stars/aoxueos/OpenWrtBuild_Occupied.svg?style=for-the-badge&color=orange"/> <img src="https://img.shields.io/github/forks/aoxueos/OpenWrtBuild_Occupied.svg?style=for-the-badge&color=ff69b4"/> <img src="https://img.shields.io/github/watchers/aoxueos/OpenWrtBuild_Occupied.svg?style=for-the-badge&color=blueviolet"/>
 
 ## OpenWrtBuild_Occupied有哪些功能？
 

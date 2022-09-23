@@ -16,7 +16,7 @@ on:
 env:
   REPO_URL: https://github.com/robimarko/openwrt
   REPO_BRANCH: ipq807x-5.15-pr
-  CONFIG_FILE: configs/AX6-5.15.config
+  CONFIG_FILE: configs/ax6-test.config
   FEEDS_CONF: feeds.conf.default
   DIY_SCRIPT: diy-ax6.sh
   UPLOAD_BIN_DIR: false

@@ -15,7 +15,7 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
-  REPO_BRANCH: openwrt-20.03
+  REPO_BRANCH: openwrt-22.03
   CONFIG_FILE: configs/x86-imm.config
   DIY_SCRIPT: diy-op.sh
   UPLOAD_BIN_DIR: false
@@ -26,7 +26,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout

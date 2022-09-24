@@ -21,7 +21,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
-  FILE_NAME: X86_64-imm
+  FILE_NAME: X86_64-off
   TZ: Asia/Shanghai
 
 jobs:

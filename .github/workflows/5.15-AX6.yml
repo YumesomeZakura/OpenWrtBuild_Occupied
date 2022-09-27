@@ -6,7 +6,7 @@
 # https://github.com/P3TERX
 #===============================================
 
-name:  AX6编译bitthief版openwrt
+name:  AX6编译develop版openwrt
 
 on:
   workflow_dispatch:
@@ -14,15 +14,15 @@ on:
     - cron: '0 17 * * *'
 
 env:
-  REPO_URL: https://github.com/bitthief/openwrt
-  REPO_BRANCH: ipq807x-5.15-pr
+  REPO_URL: https://github.com/Leo357449107/qsdk_cmiot-ax6
+  REPO_BRANCH: qsdk_12.0.5.R2_k5.4
   CONFIG_FILE: configs/AX6-5.15.config
   FEEDS_CONF: feeds.conf.default
   DIY_SCRIPT: diy-ax6.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
-  FILE_NAME: Redmi807X-bit
+  FILE_NAME: Redmi807X-de
   TZ: Asia/Shanghai
 
 jobs:

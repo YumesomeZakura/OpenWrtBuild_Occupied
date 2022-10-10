@@ -14,8 +14,8 @@ on:
     - cron: '0 17 * * *'
 
 env:
-  REPO_URL: https://github.com/Leo357449107/qsdk_cmiot-ax6
-  REPO_BRANCH: qsdk_12.0.5.R2_k5.4
+  REPO_URL: https://github.com/xiangfeidexiaohuo/lede
+  REPO_BRANCH: master
   CONFIG_FILE: configs/AX6-5.15.config
   FEEDS_CONF: feeds.conf.default
   DIY_SCRIPT: diy-ax6.sh

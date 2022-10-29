@@ -14,11 +14,11 @@ on:
     - cron: '0 17 * * *'
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/openwrt-gl-ax1800
+  REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   CONFIG_FILE: configs/qihoo.config
   FEEDS_CONF: feeds.conf.default
-  DIY_SCRIPT: diy-script.sh
+  DIY_SCRIPT: diy-ax6.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true

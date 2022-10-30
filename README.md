@@ -26,7 +26,7 @@
 * `AX6`
    * [![AX6编译Almighty Edition版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml)
    * [![AX6编译robimarko版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6-2.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6-2.yml) [![AX6编译develop版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml)
-* `Qihoo`
+* `Qihoo` Lean大佬说没机器先搁置了，大概率开不了机
    * [![QihooV6编译lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml)
 
 ## 参考项目

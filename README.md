@@ -35,7 +35,7 @@
 ## 感激
 感谢以下的项目,排名不分先后
 
-* ImmortalWrt coolsnowwolf Openwrt P3TERX 以及一切为社区默默奉献的大佬们
+* ImmortalWrt Openwrt P3TERX 以及一切为社区默默奉献的大佬们
 
 ## 关于作者
 因为有些代码是复制的，所以如果有些硬代码对原有库造成影响，十分抱歉 特别感谢

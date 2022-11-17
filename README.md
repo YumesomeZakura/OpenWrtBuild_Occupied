@@ -26,8 +26,8 @@
 * `AX6`
    * [![AX6编译Almighty Edition版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml)
    * [![AX6编译robimarko版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6-2.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6-2.yml) [![AX6编译develop版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml)
-* `Qihoo`
-   * [![QihooV6编译lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml)
+* `Qihoo` 不是我吐槽，Lean这种大神还需要抄别人代码的吗，已经连续两次把我发给他的文件直接传github了
+   * [![QihooV6编译lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml) [![QihooV6编译openwrt版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov12.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov12.yml)
 
 ## 参考项目
 早期自动编译参考klever1988，新版参考haiibo大佬。谢谢各位大佬对开源社区的风险和付出，写一个免费的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一下。

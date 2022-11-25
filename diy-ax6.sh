@@ -42,6 +42,8 @@ git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
 git clone https://github.com/riverscn/openwrt-iptvhelper.git package/openwrt-iptvhelper
 #git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
+
+
 #添加smartdns
 git clone https://github.com/kiddin9/luci-app-dnsfilter.git package/luci-app-dnsfilter
 
@@ -51,3 +53,4 @@ git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-a
 #git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 #git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 #rm -rf ../lean/luci-theme-argon
+git clone https://github.com/sirpdboy/luci-app-advanced

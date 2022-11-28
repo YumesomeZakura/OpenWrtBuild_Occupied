@@ -22,7 +22,7 @@
 * `R2S/R86S等`
    * [![R2S编译Lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Rockchip-OpenWrt.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Rockchip-OpenWrt.yml)
 
-![router](AX6_AX3600.png)
+![router](AX6.png)
 * `AX6`
    * [![AX6编译Almighty Edition版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml)
    * [![AX6编译robimarko版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6-2.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6-2.yml) [![AX6编译develop版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml)

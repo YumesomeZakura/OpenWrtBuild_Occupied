@@ -14,7 +14,7 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 # Modify default IP
@@ -25,9 +25,10 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 
 # themes添加（svn co 命令意思：指定版本如https://github）
 rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf ../lean/luci-theme-argon
+rm -rf package/lean/luci-theme-argon
 
-git clone https://github.com/kiddin9/openwrt-packages.git package/openwrt-packages
+git clone -b 18.06 https://github.com/kiddin9/luci-theme-edge.git package/openwrt-packages
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git 
 git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
 #添加额外非必须软件包

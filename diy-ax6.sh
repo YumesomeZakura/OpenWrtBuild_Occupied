@@ -27,8 +27,8 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/lean/luci-theme-argon
 
-git clone -b 18.06 https://github.com/kiddin9/luci-theme-edge.git package/openwrt-packages
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git 
+git clone -b 18.06 https://github.com/kiddin9/luci-theme-edge.git package/luci-theme-edge
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
 #添加额外非必须软件包

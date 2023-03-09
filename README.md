@@ -24,9 +24,11 @@
 
 ![router](AX6.png)
 * `AX6`
+* 项目废弃，全资源转投qsdk12开发
    * [![AX6编译Almighty Edition版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Almighty_AX6.yml)
    * [![AX6编译robimarko版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6-2.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6-2.yml) [![AX6编译develop版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/5.15-AX6.yml)
 * `Qihoo` 不是我吐槽，Lean这种大神还需要抄别人代码的吗，已经连续两次把我发给他的文件直接传github了
+* 项目废弃，全资源转投qsdk12开发
    * [![QihooV6编译lean版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov6.yml) [![QihooV6编译openwrt版openwrt](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov12.yml/badge.svg)](https://github.com/aoxueos/OpenWrtBuild_Occupied/actions/workflows/Qihoov12.yml)
 
 ## 参考项目

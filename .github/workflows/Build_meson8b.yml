@@ -13,8 +13,8 @@ on:
 #    types: [started]
 
 jobs:
-  Build_rk3568_h68k_61:
-    runs-on: ubuntu-20.04
+  Build_meson8b:
+    runs-on: ubuntu-22.04
     steps:
     - name: Clone Repository
       uses: actions/checkout@v3
@@ -59,7 +59,7 @@ jobs:
         cp -f ../diy/lean2.sh ./        
         chmod +x ./lean2.sh && ./lean2.sh    
                
-    - name: Configuration Customization - Build_rk3568_h68k_61
+    - name: Configuration Customization - meson8b cortex-a5+vfpv4
       env:
         CONFIG_FILE: './configs/arm7.config'
       run: |

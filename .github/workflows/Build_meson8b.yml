@@ -91,7 +91,7 @@ jobs:
         md5=`echo ${md5:0:10}`
         }
         
-        rom=openwrt/bin/targets/meson/*/*.img
+        rom=openwrt/bin/targets/meson/*/*
         getmd5 $rom
                 
         cp -a $rom ./ARM_Out/openwrt-$(date +%Y%m%d)_${md5}.img
@@ -111,7 +111,7 @@ jobs:
     - name: Upload Packages
       uses: actions/upload-artifact@main
       with:
-        name: H68K-Packages
+        name: armv7-Packages
         path: openwrt/bin/packages 
 
 

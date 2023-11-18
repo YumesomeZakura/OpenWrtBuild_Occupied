@@ -1,233 +1,133 @@
-
-#
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
-#
-
 name: meson8b测试
 
-on:
+on: 
   repository_dispatch:
   workflow_dispatch:
-    inputs:
-      ssh:
-        description: 'SSH connection to Actions'
-        required: false
-        default: 'false'
 
-env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
-  FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: configs/arm7.config
-  DIY_P1_SH: diy/lean1.sh
-  DIY_P2_SH: diy/lean2.sh
-  UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: false
-  UPLOAD_RELEASE: true
-  TZ: Asia/Shanghai
+# 定时触发编译
+  schedule:
+    - cron: 1 20 * * 4
+
+# 点赞☆Star触发编译
+#  watch:
+#    types: [started]
 
 jobs:
-  build:
+  Build_meson8b:
     runs-on: ubuntu-20.04
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@main
+    - name: Clone Repository
+      uses: actions/checkout@v3
 
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
-        sudo timedatectl set-timezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+        sudo timedatectl set-timezone "Asia/Shanghai" 
+        sudo -E swapoff -a
+        sudo -E rm -f /swapfile
+        sudo -E docker image prune -a -f
+        sudo -E snap set system refresh.retain=2
+        sudo -E apt-get -y purge dotnet* firefox ghc* google* hhvm llvm* mono* mysql* openjdk* php* zulu*
+        sudo -E apt-get -y autoremove --purge
+        sudo -E rm -rf /usr/share/dotnet /usr/local/lib/android/sdk /etc/mysql /etc/php /usr/local/share/boost
+        [ -n "$AGENT_TOOLSDIRECTORY" ] && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        sudo -E apt-get update -y
+        sudo -E apt-get install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev python3-setuptools
+        pip install aligo
+        sudo -E apt-get clean
+        git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
+        df -h
+        
     - name: Clone source code
-      working-directory: /workdir
+      env: 
+        REPO_URL: https://github.com/coolsnowwolf/lede
+        REPO_BRANCH: master
       run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-    - name: Load custom feeds
-      run: |
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $DIY_P1_SH
+        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P1_SH
-    - name: Update feeds
-      run: cd openwrt && ./scripts/feeds update -a
+        cp -f ../diy/lean1.sh ./
+        chmod +x ./lean1.sh && ./lean1.sh
 
-    - name: Install feeds
-      run: cd openwrt && ./scripts/feeds install -a
-
-    - name: Load custom configuration
+    - name: Update & Install feeds
+      working-directory: ./openwrt
       run: |
-        [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P2_SH
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+        ./scripts/feeds update -a
+
+        ./scripts/feeds install -a
+
+        cp -f ../diy/lean2.sh ./        
+        chmod +x ./lean2.sh && ./lean2.sh    
+               
+    - name: Configuration Customization - meson8b cortex-a5+vfpv4
       env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-
-    - name: Download package
-      id: package
+        CONFIG_FILE: './configs/arm7.config'
       run: |
-        cd openwrt
-        make defconfig
-        make download -j8
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        cd openwrt && make defconfig
+        
+    - name: Download package
+      working-directory: ./openwrt
+      run: |
+        make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-    - name: Compile the firmware
-      id: compile
+
+    - name: Build firmware
+      working-directory: ./openwrt
       run: |
-        cd openwrt
-        echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "::set-output name=status::success"
-        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
-        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
-        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+        make -j$(nproc) V=s
         
-    - name: burn
+    - name: Assemble Artifact
+      id: assemble_artifact
       run: |
-          sudo apt install img2simg
-          ver="v0.3.1"
-          curl -L -o ./AmlImg https://github.com/hzyitc/AmlImg/releases/download/$ver/AmlImg_${ver}_linux_amd64
-          chmod +x ./AmlImg
-          curl -L -o ./uboot.img https://github.com/hzyitc/u-boot-onecloud/releases/download/build-20221028-0940/eMMC.burn.img
-          ./AmlImg unpack ./uboot.img burn/
-          echo "::endgroup::"
-          diskimg=$(ls openwrt/bin/targets/*/*/*.img)
-          loop=$(sudo losetup --find --show --partscan $diskimg)
-          img_ext="openwrt.img"
-          img_mnt="xd"
-          rootfs_mnt="img"
-          boot_img=$1${img_ext}
-          boot_img_mnt=$1${img_mnt}
-          rootfs_img_mnt=$1${rootfs_mnt}
-          echo ${boot_img}
-          echo ${boot_img_mnt}
-          echo ${rootfs_img_mnt}
-          sudo rm -rf ${boot_img}
-          sudo rm -rf ${boot_img_mnt}
-          sudo rm -rf ${rootfs_img_mnt}
-          sudo dd if=/dev/zero of=${boot_img} bs=1M count=400
-          sudo mkfs.ext4 ${boot_img}
-          sudo mkdir ${boot_img_mnt}
-          sudo mkdir ${rootfs_img_mnt}
-          sudo mount ${boot_img} ${boot_img_mnt}
-          sudo mount ${loop}p2 ${rootfs_img_mnt}
-          cd ${rootfs_img_mnt}
-          sudo cp -r * ../${boot_img_mnt}
-          cd ..
-          sudo sync
-          sudo umount ${boot_img_mnt}
-          sudo umount ${rootfs_img_mnt}
-          sudo img2simg ${loop}p1 burn/boot.simg
-          sudo img2simg openwrt.img burn/rootfs.simg
-          sudo rm -rf *.img
-          sudo losetup -d $loop
-          cat <<EOF >>burn/commands.txt
-          PARTITION:boot:sparse:boot.simg
-          PARTITION:rootfs:sparse:rootfs.simg
-          EOF
-          prefix=$(ls openwrt/bin/targets/*/*/*.img | sed 's/\.img$//')
-          burnimg=${prefix}.burn.img
-          ./AmlImg pack $burnimg burn/
-          for f in openwrt/bin/targets/*/*/*.burn.img; do
-            sha256sum "$f" >"${f}.sha"
-            xz --threads=0 --compress "$f"
-          done
-          sudo rm -rf openwrt/bin/targets/*/*/*.img
-    - name: Check space usage
-      if: (!cancelled())
-      run: df -hT
-
-    - name: Upload bin directory
+        rm -rf ./ARM_Out
+        mkdir -p ./ARM_Out/
+        
+        getmd5()
+        {
+        md5sum=`md5sum $1`
+        md5=`echo ${md5sum% *}`
+        md5=`echo ${md5:0:10}`
+        }
+        
+        rom=openwrt/bin/targets/meson/armv7/openwrt-*-squashfs-sysupgrade.img.gz
+        getmd5 $rom
+                
+        cp -a $rom ./ARM_Out/LEDE-$(date +%Y%m%d)_${md5}.img.gz
+               
+    - name: Upload Firmwares
       uses: actions/upload-artifact@main
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin
+        name: meson8b
+        path: ARM_Out/*.img.gz 
 
-    - name: Organize files
-      id: organize
-      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
-      run: |
-        cd openwrt/bin/targets/*/*
-        rm -rf packages
-        echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-        echo "::set-output name=status::success"
-    - name: Upload firmware directory
+    - name: Upload config
       uses: actions/upload-artifact@main
-      if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: ${{ env.FIRMWARE }}
+        name: meson8b-config
+        path: openwrt/.config  
+ 
+    - name: Upload Packages
+      uses: actions/upload-artifact@main
+      with:
+        name: H68K-Packages
+        path: openwrt/bin/packages 
 
-    - name: Upload firmware to cowtransfer
-      id: cowtransfer
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
-      run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
-        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-        echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
-    - name: Upload firmware to WeTransfer
-      id: wetransfer
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
-      run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
-        echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-        echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
-    - name: Generate release tag
-      id: tag
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
-        touch release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo "::set-output name=status::success"
-    - name: Upload firmware to release
-      uses: softprops/action-gh-release@v1
-      if: steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*   
 
-    - name: Delete workflow runs
-      uses: GitRML/delete-workflow-runs@main
-      with:
-        retain_days: 1
-        keep_minimum_runs: 3
+    - name: Generate Tag & Release Name
+      id: generate_name
+      run: |
+        time=$(date +%Y%m%d%H%M%S)
+        release_tag="$time"
+        release_name="meson8b-$(date +%Y%m%d)"
+        echo "release_name=$release_name" >> $GITHUB_OUTPUT
+        echo "release_tag=$release_tag" >> $GITHUB_OUTPUT       
 
-    - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.1.0
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+    - name: Create Release & Upload
+      uses: ncipollo/release-action@v1
       with:
-        keep_latest: 3
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: ARM_Out/*.img.gz
+        name: ${{ steps.generate_name.outputs.release_name }}
+        tag: ${{ steps.generate_name.outputs.release_tag }}
+        token: ${{ secrets.GITHUB_TOKEN }}                        

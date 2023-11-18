@@ -97,10 +97,10 @@ jobs:
         md5=`echo ${md5:0:10}`
         }
         
-        rom=openwrt/bin/targets/meson/meson8b/*.img
+        rom=openwrt/bin/targets/meson/meson8b/openwrt-*.img.gz
         getmd5 $rom
                 
-        cp -a $rom ./ARM_Out/openwrt-$(date +%Y%m%d)_${md5}.img
+        cp -a $rom ./ARM_Out/openwrt-$(date +%Y%m%d)_${md5}.img.gz
                
     - name: Upload Firmwares
       uses: actions/upload-artifact@main

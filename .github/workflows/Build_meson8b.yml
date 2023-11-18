@@ -77,6 +77,12 @@ jobs:
       working-directory: ./openwrt
       run: |
         make -j$(nproc) V=s
+
+    - name: Upload bin directory
+      uses: actions/upload-artifact@main
+      with:
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin
         
     - name: Assemble Artifact
       id: assemble_artifact
@@ -91,7 +97,7 @@ jobs:
         md5=`echo ${md5:0:10}`
         }
         
-        rom=openwrt/bin/targets/meson/*/*
+        rom=openwrt/bin/targets/meson/meson8b/*.img
         getmd5 $rom
                 
         cp -a $rom ./ARM_Out/openwrt-$(date +%Y%m%d)_${md5}.img
